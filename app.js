@@ -15,6 +15,7 @@ app.use(notFound);
 app.use(errorHandlerMiddleware);
 
 // listening & connected to DB
+const port = process.env.PORT || 3000;
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -23,6 +24,6 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    app.listen(process.env.PORT, () => console.log("listenting requests on port " + process.env.PORT));
+    app.listen(port, () => console.log("listenting requests on port " + port));
   })
   .catch((err) => console.log(err));
